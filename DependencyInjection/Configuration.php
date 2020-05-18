@@ -14,8 +14,8 @@ class Configuration implements ConfigurationInterface
         $treeBuilder
             ->getRootNode()
             ->children()
-            ->integerNode('user_key')->isRequired()->cannotBeEmpty()->end()
-            ->booleanNode('is_develop_key')->defaultNull()->end()
+            ->integerNode('user_key')->end()
+            ->scalarNode('is_develop_key')->defaultNull()->end()
             ->end()
             ->end()
         ;
