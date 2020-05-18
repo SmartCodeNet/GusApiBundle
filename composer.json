@@ -1,0 +1,42 @@
+{
+    "name": "smartcodenet/gus-api-bundle",
+    "description": "Symfony bundle to connecting GUS API",
+    "type": "symfony-bundle",
+    "keywords": ["GUS connector", "php", "symfony", "bundle", "GUS"],
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Krzysztof Orzoł",
+            "email": "krzysztoforzol@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.1.3",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "ext-soap": "*",
+        "ext-simplexml": "*"
+    },
+    "require-dev": {
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "SmartCodeNet\\GusApiBundle\\": ""
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "GlobeGroup\\SerializerBundle\\Tests\\": "Tests"
+        }
+    }
+}
