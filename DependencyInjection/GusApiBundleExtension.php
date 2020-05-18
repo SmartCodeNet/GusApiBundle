@@ -15,9 +15,6 @@ class GusApiBundleExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-        $loader->load('services.yaml');
-
         $configuration = new Configuration();
 
         $config = $this->processConfiguration($configuration, $configs);
@@ -25,5 +22,9 @@ class GusApiBundleExtension extends Extension
         $definition = $container->getDefinition(GusFactory::class);
         $definition->replaceArgument(0, $config['user_key']);
         $definition->replaceArgument(1, $config['test_user_key']);
+
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader->load('services.yaml');
+
     }
 }
