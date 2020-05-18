@@ -1,7 +1,7 @@
 services:
   SmartCodeNet\GusApiBundle\Factory\GusFactory:
     arguments:
-      - '%user_key%'
-      - '%user_test_key%'
+      - 'test'
+      - 'true'
 
   SmartCodeNet\GusApiBundle\Factory\GusFactoryInterface: '@SmartCodeNet\GusApiBundle\Factory\GusFactory'
