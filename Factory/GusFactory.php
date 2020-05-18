@@ -33,6 +33,7 @@ final class GusFactory implements GusFactoryInterface
                 )
         );
 
+        $extension->login();
         return (new GusService($extension));
     }
 }
