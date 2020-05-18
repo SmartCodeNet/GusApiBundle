@@ -1,6 +1,7 @@
 services:
   SmartCodeNet\GusApiBundle\Factory\GusFactory:
     public: true
-
-
+    arguments:
+      - ~
+      - ~
   SmartCodeNet\GusApiBundle\Factory\GusFactoryInterface: '@SmartCodeNet\GusApiBundle\Factory\GusFactory'
