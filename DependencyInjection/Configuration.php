@@ -15,7 +15,7 @@ class Configuration implements ConfigurationInterface
             ->getRootNode()
             ->children()
             ->scalarNode('user_key')->defaultValue('abcde12345abcde12345')->cannotBeEmpty()->end()
-            ->booleanNode('is_develop_key')->defaultFalse()->end()
+            ->booleanNode('is_develop_key')->defaultTrue()->end()
             ->end()
             ->end()
         ;
