@@ -7,7 +7,7 @@ use SmartCodeNet\GusApiBundle\Extension\Gus\GusExtension;
 use SmartCodeNet\GusApiBundle\Extension\Soap\SoapAdapter;
 use SmartCodeNet\GusApiBundle\Service\GusService;
 
-final class GusFactory
+final class GusFactory implements GusFactoryInterface
 {
     /** @var string  */
     private $userKey;
