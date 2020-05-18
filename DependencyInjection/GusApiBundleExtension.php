@@ -24,6 +24,6 @@ class GusApiBundleExtension extends Extension
 
         $definition = $container->getDefinition(GusFactory::class);
         $definition->replaceArgument(0, $config['user_key']);
-        $definition->replaceArgument(1, $config['test_user_key']);
+        $definition->replaceArgument(1, $config['is_develop_key']);
     }
 }
