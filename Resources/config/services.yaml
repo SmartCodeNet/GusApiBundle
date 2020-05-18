@@ -3,4 +3,4 @@ services:
     class: SmartCodeNet\GusApiBundle\Factory\GusFactory
     public: true
 
-  SmartCodeNet\GusApiBundle\Factory\GusFactoryInterface: '@SmartCodeNet\GusApiBundle\Factory\GusFactory'
+  SmartCodeNet\GusApiBundle\Factory\GusFactoryInterface: '@gusapibundle.gus_factory'
