@@ -6,6 +6,10 @@ final class GusDataGetConstant
 {
     public const REGON9 = 'regon9';
     public const NAME = 'nazwa';
+    public const FIRSTNAME = 'imie';
+    public const FIRSTNAME_FIRST = 'imie1';
+    public const FIRSTNAME_SECOND = 'imie2';
+    public const LASTNAME = 'nazwisko';
     public const NIP = 'nip';
     public const NIP_STATUS = 'statusNip';
     public const SHORT_NAME = 'nazwaSkrocona';

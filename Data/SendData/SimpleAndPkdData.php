@@ -27,11 +27,11 @@ class SimpleAndPkdData extends SimpleData
         return $this->pkdList;
     }
 
-    public function getPkdDetail(string $pkdNumber): ?PkdData
+    public function getPkdDetail(string $pkdCode): ?PkdData
     {
         /** @var PkdData $pkd */
         foreach ($this->pkdList as $pkd) {
-            if ($pkd->getName() === $pkdNumber) {
+            if ($pkd->getCode() === $pkdCode) {
                 return $pkd;
             }
         }

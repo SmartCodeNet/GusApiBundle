@@ -8,6 +8,12 @@ use SmartCodeNet\GusApiBundle\ValueObject\ValueXmlHandler;
 class SimpleData implements SendDataInterface
 {
     /** @var string|null  */
+    private $firstName;
+
+    /** @var string|null  */
+    private $lastName;
+
+    /** @var string|null  */
     private $regon;
 
     /** @var string|null  */
@@ -48,6 +54,16 @@ class SimpleData implements SendDataInterface
 
     public function __construct(ValueXmlHandler $valueXmlHandler)
     {
+        if ($this->firstName === null) {
+            $this->firstName = $valueXmlHandler->getValue(GusDataGetConstant::FIRSTNAME);
+        }
+        if ($this->firstName === null) {
+            $this->firstName = $valueXmlHandler->getValue(GusDataGetConstant::FIRSTNAME_FIRST);
+        }
+        if ($this->firstName === null) {
+            $this->firstName = $valueXmlHandler->getValue(GusDataGetConstant::FIRSTNAME_SECOND);
+        }
+        $this->lastName = $valueXmlHandler->getValue(GusDataGetConstant::LASTNAME);
         $this->regon = $valueXmlHandler->getValue(GusDataGetConstant::REGON9);
         $this->nip = $valueXmlHandler->getValue(GusDataGetConstant::NIP);
         $this->name = $valueXmlHandler->getValue(GusDataGetConstant::NAME);
@@ -122,5 +138,15 @@ class SimpleData implements SendDataInterface
     public function getOfficeData(): ?SimpleOfficeData
     {
         return $this->officeData;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
     }
 }
