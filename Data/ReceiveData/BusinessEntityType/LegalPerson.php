@@ -20,6 +20,7 @@ class LegalPerson extends BusinessEntityAbstract
             LegalPersonReportDetailFactory::createLegalPersonGeneralData()
         )
             ->getSpecificData();
+
         $report = $this->setReceiveData(LegalPersonTypeManager::decide($reportInformation))->getSpecificData();
         $report = array_merge($report, $reportInformation);
 
@@ -29,7 +30,11 @@ class LegalPerson extends BusinessEntityAbstract
         ) {
             $report1 = $this->setReceiveData(LegalPersonReportDetailFactory::createLegalPersonPkdData())
                 ->getSpecificData();
-            $report['pkdList'] = array_merge($report['pkdList'] = [], $report1);
+
+            $report['pkdList'] = array_merge(
+                $report['pkdList'] = [],
+                (array_key_exists(0, $report1) || empty($report1)) ? $report1 : [$report1]
+            );
         }
 
         // add branch list data
@@ -38,7 +43,10 @@ class LegalPerson extends BusinessEntityAbstract
         ) {
             $report1 = $this->setReceiveData(LegalPersonReportDetailFactory::createLegalPersonCompanyBranchListData())
                 ->getSpecificData();
-            $report['branchList'] = array_merge($report['branchList'] = [], $report1);
+            $report['branchList'] = array_merge(
+                $report['branchList'] = [],
+                (array_key_exists(0, $report1) || empty($report1)) ? $report1 : [$report1]
+            );
         }
 
         if ($dataStructure instanceof PkdDataStructure) {

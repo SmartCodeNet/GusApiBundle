@@ -19,6 +19,9 @@ final class PersonEntityTypeDataFactory
     ): BusinessEntityInterface {
         $entity = null;
         switch (strtoupper($searchReportDTO->getType())) {
+            case GusConstant::LEGAL_PERSON_SYMBOL:
+                $entity = (new LegalPerson($gusExtension))->setSearchReport($searchReportDTO);
+                break;
             case GusConstant::LAW_PERSON_SYMBOL:
                 $entity = (new LawPerson($gusExtension))->setSearchReport($searchReportDTO);
                 break;
@@ -29,7 +32,7 @@ final class PersonEntityTypeDataFactory
                 $entity = (new LocalUnitLegalPerson($gusExtension))->setSearchReport($searchReportDTO);
                 break;
             default:
-                $entity = (new LegalPerson($gusExtension))->setSearchReport($searchReportDTO);
+                $entity = new LegalPerson($gusExtension);
                 break;
 
         }

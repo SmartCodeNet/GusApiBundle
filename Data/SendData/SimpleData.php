@@ -11,6 +11,9 @@ class SimpleData implements SendDataInterface
     private $firstName;
 
     /** @var string|null  */
+    private $firstNameSecond;
+
+    /** @var string|null  */
     private $lastName;
 
     /** @var string|null  */
@@ -60,8 +63,8 @@ class SimpleData implements SendDataInterface
         if ($this->firstName === null) {
             $this->firstName = $valueXmlHandler->getValue(GusDataGetConstant::FIRSTNAME_FIRST);
         }
-        if ($this->firstName === null) {
-            $this->firstName = $valueXmlHandler->getValue(GusDataGetConstant::FIRSTNAME_SECOND);
+        if ($this->firstNameSecond === null) {
+            $this->firstNameSecond = $valueXmlHandler->getValue(GusDataGetConstant::FIRSTNAME_SECOND);
         }
         $this->lastName = $valueXmlHandler->getValue(GusDataGetConstant::LASTNAME);
         $this->regon = $valueXmlHandler->getValue(GusDataGetConstant::REGON9);
@@ -148,5 +151,10 @@ class SimpleData implements SendDataInterface
     public function getLastName(): ?string
     {
         return $this->lastName;
+    }
+
+    public function getFirstNameSecond(): ?string
+    {
+        return $this->firstNameSecond;
     }
 }
