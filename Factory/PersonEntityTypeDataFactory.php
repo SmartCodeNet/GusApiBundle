@@ -32,7 +32,7 @@ final class PersonEntityTypeDataFactory
                 $entity = (new LocalUnitLegalPerson($gusExtension))->setSearchReport($searchReportDTO);
                 break;
             default:
-                $entity = null;
+                $entity = (new LegalPerson($gusExtension))->setSearchReport($searchReportDTO);
                 break;
 
         }

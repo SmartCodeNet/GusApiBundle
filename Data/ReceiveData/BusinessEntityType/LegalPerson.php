@@ -16,6 +16,9 @@ class LegalPerson extends BusinessEntityAbstract
 
     public function receiveDataByDataStructure(DataStructureInterface $dataStructure): ValueXmlHandler
     {
+        if ($this->getSearchReport()->getRegon() === null) {
+            return ValueXmlHandler::createFromArray(['nip' => $this->getSearchReport()->getNip()]);
+        }
         $reportInformation = $this->setReceiveData(
             LegalPersonReportDetailFactory::createLegalPersonGeneralData()
         )
