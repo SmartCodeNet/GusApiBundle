@@ -6,5 +6,5 @@ use SmartCodeNet\GusApiBundle\Data\ReceiveData\BusinessEntityType\BusinessEntity
 
 interface DataStructureInterface
 {
-    public function prepareDataStructure(BusinessEntityInterface $businessEntity): DataStructureInterface;
+    public function prepareDataStructure(?BusinessEntityInterface $businessEntity): DataStructureInterface;
 }

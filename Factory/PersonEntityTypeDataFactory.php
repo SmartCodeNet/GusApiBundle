@@ -16,7 +16,7 @@ final class PersonEntityTypeDataFactory
     public static function create(
         SearchReportDTO $searchReportDTO,
         GusExtension $gusExtension
-    ): BusinessEntityInterface {
+    ): ?BusinessEntityInterface {
         $entity = null;
         switch (strtoupper($searchReportDTO->getType())) {
             case GusConstant::LEGAL_PERSON_SYMBOL:
@@ -32,7 +32,7 @@ final class PersonEntityTypeDataFactory
                 $entity = (new LocalUnitLegalPerson($gusExtension))->setSearchReport($searchReportDTO);
                 break;
             default:
-                $entity = new LegalPerson($gusExtension);
+                $entity = null;
                 break;
 
         }
