@@ -4,6 +4,7 @@
     "type": "symfony-bundle",
     "keywords": ["GUS connector", "php", "symfony", "bundle", "GUS"],
     "license": "MIT",
+    "homepage": "https://github.com/SmartCodeNet/GusApiBundle",
     "minimum-stability": "dev",
     "authors": [
         {
@@ -25,6 +26,9 @@
             "*": "dist"
         },
         "sort-packages": true
+    },
+    "conflict": {
+        "symfony/symfony": "<4.2.*"
     },
     "autoload": {
         "psr-4": {

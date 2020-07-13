@@ -4,6 +4,7 @@ namespace SmartCodeNet\GusApiBundle\Extension\Gus;
 
 use SmartCodeNet\GusApiBundle\Constants\GusConstant;
 use SmartCodeNet\GusApiBundle\DTO\SearchReportDTO;
+use SmartCodeNet\GusApiBundle\Exception\BusinessEntityNotFoundException;
 use SmartCodeNet\GusApiBundle\Exception\InvalidUserKeyException;
 use SmartCodeNet\GusApiBundle\Exception\NoDataException;
 use SmartCodeNet\GusApiBundle\Extension\Soap\AdapterInterface;
@@ -104,6 +105,11 @@ class GusExtension
         }
     }
 
+    /**
+     * @param string $nip
+     * @return SearchReportDTO
+     * @throws BusinessEntityNotFoundException
+     */
     public function getGeneralDataNip(string $nip): SearchReportDTO
     {
         return current($this->search([
@@ -111,6 +117,11 @@ class GusExtension
         ]));
     }
 
+    /**
+     * @param string $regon
+     * @return SearchReportDTO
+     * @throws BusinessEntityNotFoundException
+     */
     public function getGeneralDataRegon(string $regon): SearchReportDTO
     {
         return current($this->search([
@@ -118,6 +129,11 @@ class GusExtension
         ]));
     }
 
+    /**
+     * @param string $krs
+     * @return SearchReportDTO
+     * @throws BusinessEntityNotFoundException
+     */
     public function getGeneralDataKrs(string $krs): SearchReportDTO
     {
         return current($this->search([
@@ -140,13 +156,26 @@ class GusExtension
         return $data;
     }
 
+    /**
+     * @param array $searchData
+     * @return array
+     * @throws BusinessEntityNotFoundException
+     */
     private function search(array $searchData): array
     {
         $result = [];
         try {
+            /** @var \SimpleXMLElement $response */
             $response = $this->adapter->search($this->sessionId, $searchData);
         } catch (NoDataException $e) {
             return [];
+        }
+
+        $errorCode = ((array)$response)['ErrorCode']??null;
+        if ($errorCode === '4') {
+            throw new BusinessEntityNotFoundException(
+                ((array)$response)['ErrorMessagePl']??'Business entity not found'
+            );
         }
         foreach ($response as $report) {
             $result[] = new SearchReportDTO($report);
