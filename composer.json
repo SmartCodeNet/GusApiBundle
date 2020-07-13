@@ -27,9 +27,6 @@
         },
         "sort-packages": true
     },
-    "conflict": {
-        "symfony/symfony": "<4.2.*"
-    },
     "autoload": {
         "psr-4": {
             "SmartCodeNet\\GusApiBundle\\": ""
