@@ -23,7 +23,10 @@ class LawPerson extends BusinessEntityAbstract
             $dataStructure instanceof FullAndPkdDataStructure) {
             $reportPkd = $this->setReceiveData(LawPersonReportDetailFactory::createLawPersonPkdData())
                 ->getSpecificData();
-            $report['pkdList'] = array_merge($report['pkdList'] = [], $reportPkd);
+            $report['pkdList'] = array_merge(
+                $report['pkdList'] = [],
+                (array_key_exists(0, $reportPkd) || empty($reportPkd)) ? $reportPkd : [$reportPkd]
+            );
         }
 
         if ($dataStructure instanceof FullDataStructure ||
